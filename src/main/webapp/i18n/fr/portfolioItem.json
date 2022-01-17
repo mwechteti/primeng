@@ -1,0 +1,26 @@
+{
+  "rmkproApp": {
+    "portfolioItem": {
+      "home": {
+        "title": "PortfolioItems",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Portfolio Item",
+        "createOrEditLabel": "Créer ou éditer un Portfolio Item",
+        "notFound": "Aucun Portfolio Item trouvé"
+      },
+      "created": "Un nouveau Portfolio Item a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Portfolio Item avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Portfolio Item avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Portfolio Item {{ id }} ?"
+      },
+      "detail": {
+        "title": "Portfolio Item"
+      },
+      "id": "ID",
+      "vehicle": "Vehicule",
+      "stockEntranceDate": "Date d'entrée au stock",
+      "portfolio": "Portfolio"
+    }
+  }
+}

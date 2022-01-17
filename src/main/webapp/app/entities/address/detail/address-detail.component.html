@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="address">
+      <h2 data-cy="addressDetailsHeading"><span jhiTranslate="rmkproApp.address.detail.title">Address</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ address.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="rmkproApp.address.label">Label</span></dt>
+        <dd>
+          <span>{{ address.label }}</span>
+        </dd>
+        <dt><span jhiTranslate="rmkproApp.address.postCode">Post Code</span></dt>
+        <dd>
+          <span>{{ address.postCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="rmkproApp.address.addressLine1">Address Line 1</span></dt>
+        <dd>
+          <span>{{ address.addressLine1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="rmkproApp.address.addressLine2">Address Line 2</span></dt>
+        <dd>
+          <span>{{ address.addressLine2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="rmkproApp.address.city">City</span></dt>
+        <dd>
+          <span>{{ address.city }}</span>
+        </dd>
+        <dt><span jhiTranslate="rmkproApp.address.main">Main</span></dt>
+        <dd>
+          <span>{{ address.main }}</span>
+        </dd>
+        <dt><span jhiTranslate="rmkproApp.address.country">Country</span></dt>
+        <dd>
+          <div *ngIf="address.country">
+            <a [routerLink]="['/country', address.country?.id, 'view']">{{ address.country?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="rmkproApp.address.legalEntity">Legal Entity</span></dt>
+        <dd>
+          <div *ngIf="address.legalEntity">
+            <a [routerLink]="['/legal-entity', address.legalEntity?.id, 'view']">{{ address.legalEntity?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/address', address.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

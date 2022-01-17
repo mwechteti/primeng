@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <!--
+        Added the entity Portfolio.
+    -->
+    <changeSet id="0003-2-a" author="serge">
+        <createTable tableName="user_portfolio">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="portfolio_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="0003-2-b" author="serge" >
+        <addUniqueConstraint columnNames="user_id, portfolio_id" constraintName="uc_user_portfolio" tableName="user_portfolio"/>
+    </changeSet>
+
+    <changeSet id="0003-2-c" author="serge" >
+        <addForeignKeyConstraint
+            baseColumnNames="user_id"
+            baseTableName="user_portfolio"
+            constraintName="fk_user_portfolio_user_id"
+            deferrable="false"
+            initiallyDeferred="false"
+            referencedColumnNames="id"
+            referencedTableName="user"
+            validate="true"/>
+    </changeSet>
+
+    <changeSet id="0003-2-d" author="serge" >
+        <addForeignKeyConstraint
+            baseColumnNames="portfolio_id"
+            baseTableName="user_portfolio"
+            constraintName="fk_user_portfolio_portfolio_id"
+            deferrable="false"
+            initiallyDeferred="false"
+            referencedColumnNames="id"
+            referencedTableName="portfolio"
+            validate="true"/>
+    </changeSet>
+
+    <changeSet id="0003-2-data" author="serge" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/user_portfolio.csv"
+                  separator=";"
+                  tableName="user_portfolio"
+                  usePreparedStatements="true">
+            <column name="user_id" type="numeric"/>
+            <column name="portfolio_id" type="numeric"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

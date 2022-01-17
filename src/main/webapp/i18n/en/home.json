@@ -1,0 +1,15 @@
+{
+  "home": {
+    "title": "RMKPRO: Portfolio",
+    "logged": {
+      "message": "You are logged in as user "
+    },
+    "portfolioItem": {
+      "carImage": "Car Image",
+      "plateNumber": "Plate Number",
+      "carMake": "Car Make",
+      "carModel": "Car Model",
+      "stockEntranceDate": "Stock Entrance Date"
+    }
+  }
+}

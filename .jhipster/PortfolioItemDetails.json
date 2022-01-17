@@ -1,0 +1,15 @@
+{
+  "name": "PortfolioItemDetails",
+  "fields": [],
+  "relationships": [],
+  "entityTableName": "portfolio_item_details",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211203152232"
+}

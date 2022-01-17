@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-portfolio-item-heading"
+        data-cy="PortfolioItemCreateUpdateHeading"
+        jhiTranslate="rmkproApp.portfolioItem.home.createOrEditLabel"
+      >
+        Create or edit a Portfolio Item
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="rmkproApp.portfolioItem.portfolio" for="field_portfolio">Portfolio</label>
+          <select class="form-control" id="field_portfolio" data-cy="portfolio" name="portfolio" formControlName="portfolio">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="portfolioOption.id === editForm.get('portfolio')!.value?.id ? editForm.get('portfolio')!.value : portfolioOption"
+              *ngFor="let portfolioOption of portfoliosSharedCollection; trackBy: trackPortfolioById"
+            >
+              {{ portfolioOption.label }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-control-label" jhiTranslate="rmkproApp.portfolioItem.vehicle" for="field_vehicle">Vehicle</label>
+        <select class="form-control" id="field_vehicle" data-cy="vehicle" name="vehicle" formControlName="vehicle">
+          <option [ngValue]="null"></option>
+          <option
+            [ngValue]="vehicleOption.id === editForm.get('vehicle')!.value?.id ? editForm.get('vehicle')!.value : vehicleOption"
+            *ngFor="let vehicleOption of vehiclesCollection; trackBy: trackVehicleById"
+          >
+          [{{vehicleOption?.plateNumber}}] - {{ vehicleOption.make?.label }} {{vehicleOption.model?.label}} 
+          </option>
+        </select>
+      </div>
+
+      <!-- Toa add an array of status entries here-->
+      <div class="form-group">
+        <label class="form-control-label" jhiTranslate="rmkproApp.portfolioItem.itemStatus" for="field_item_status">Status</label>
+        <select class="form-control" id="field_item_status" data-cy="item_status" name="item_status" formControlName="item_status">
+          <option [ngValue]="null"></option>
+          <option
+            [ngValue]="statusOption.id === editForm.get('item_status')!.value?.id ? editForm.get('item_status')!.value : statusOption"
+            *ngFor="let statusOption of portfolioItemStatuses; trackBy: trackPortfolioItemStatusById"
+          >
+            {{ statusOption.label }}
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

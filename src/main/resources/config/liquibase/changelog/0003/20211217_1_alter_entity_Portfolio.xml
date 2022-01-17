@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <!--
+        Add a new column label to the entity Portfolio.
+    -->
+    <changeSet id="0003-1" author="serge">
+        <addColumn tableName="portfolio" >
+            <column name="label" type="varchar(50)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uc_portfolio_label"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="0003-1-data" author="serge" context="faker">
+        <loadData
+            file="config/liquibase/fake-data/portfolio.csv"
+            separator=";"
+            tableName="portfolio"
+            usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="label" type="string"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

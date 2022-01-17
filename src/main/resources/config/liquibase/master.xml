@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+    <property name="now" value="now()" dbms="mysql, mariadb"/>
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql, mariadb"/>
+    <property name="clobType" value="clob" dbms="h2"/>
+    <property name="clobType" value="clob" dbms="mysql, oracle, mssql, mariadb, postgresql"/>
+    <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
+    <property name="datetimeType" value="datetime(6)" dbms="mysql, mariadb"/>
+    <property name="datetimeType" value="datetime" dbms="oracle, mssql, postgresql, h2"/>
+
+    <!-- testing -->
+    <include file="config/liquibase/changelog/testing/testing_context_data.xml" relativeToChangelogFile="false"/>
+
+    <!-- 0001-->
+    <include file="config/liquibase/changelog/0001/20210919_create_core_tables.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0001/20210919_added_entity_LegalEntity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0001/20210919_added_entity_LegalEntityType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0001/20210919_added_entity_Make.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0001/20210919_added_entity_Model.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0001/20210919_added_entity_Vehicle.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0001/20210919_added_entity_constraints_Model.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0001/20210919_added_entity_constraints_LegalEntity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0001/20210919_added_entity_constraints_Vehicle.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0001/20211129_added_entities_address_and_country.xml" relativeToChangelogFile="false"/>
+
+    <!-- 0002-->
+    <include file="config/liquibase/changelog/0002/20211203_1_alter_entity_Vehicle.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0002/20211203_2_added_entity_Portfolio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0002/20211203_3_added_entity_PortfolioItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0002/20211203_4_added_entity_PortfolioItemDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0002/20211203_5_added_entity_PortfolioItemStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0002/20211203_6_added_entity_PortfolioItemStatusEntry.xml" relativeToChangelogFile="false"/>
+
+    <!-- 0003-->
+    <include file="config/liquibase/changelog/0003/20211217_1_alter_entity_Portfolio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0003/20211217_2_added_relationship_User_Portfolio.xml" relativeToChangelogFile="false"/>
+
+
+
+</databaseChangeLog>

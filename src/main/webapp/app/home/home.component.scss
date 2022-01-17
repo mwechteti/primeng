@@ -1,0 +1,93 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+// import our custom theme
+@import '../../content/scss/_rmk-theme';
+
+/* ==========================================================================
+Main page styles
+========================================================================== */
+$color-config:    mat.get-color-config($theme);
+$primary-palette: map.get($color-config, 'primary');
+$accent-palette:  map.get($color-config, 'accent');
+
+
+.standard-button:hover {
+    background-color: mat.get-color-from-palette($accent-palette);
+    color: mat.get-color-from-palette($primary-palette);
+  }
+
+/* ==========================================================================
+Portfolio Selecion Style
+========================================================================== */
+.portfolio-select {
+  text-align: right;
+  padding: 8px;
+}
+
+.portfolio-select-field {
+  background-color: mat.get-color-from-palette($primary-palette, 'lighter');
+  border-radius: 10px;
+}
+
+::ng-deep .mat-form-field {
+  .mat-form-field-label {
+      color: mat.get-typography-config($light-text);
+  }
+
+  // small arrow selection
+  .mat-select-arrow {
+    color: mat.get-typography-config($light-text);
+  }
+  .mat-select-arrow-wrapper {
+    color: mat.get-typography-config($light-text);
+  }
+
+  .mat-form-field-underline {
+      color: mat.get-typography-config($light-text);
+  }
+  .mat-form-field-ripple {
+     // small horizontal line under the selection
+      background-color: mat.get-typography-config($light-text);
+  }
+  .mat-select-value-text {
+    color: mat.get-typography-config($light-text);
+    font-size: smaller;
+  }
+}
+
+// During selection process
+::ng-deep .mat-form-field.mat-focused {
+  .mat-form-field-label {
+      color: mat.get-typography-config($light-text);
+  }
+  .mat-form-field-label:hover {
+    color: mat.get-typography-config($dark-text);
+  }
+  .mat-form-field-ripple {
+    // small horizontal line under the selection
+    background-color: mat.get-typography-config($light-text);
+  }
+
+  .mat-form-field-ripple:hover {
+    background-color: mat.get-typography-config($dark-text);
+  }
+  .mat-input-element {
+      color: mat.get-typography-config($light-text);
+  }
+  .mat-select-arrow {
+    color: mat.get-typography-config($light-text);
+  }
+  .mat-select-arrow-wrapper {
+    color: mat.get-typography-config($light-text);
+  }
+  .mat-select-value-text {
+    color: mat.get-typography-config($light-text);
+    font-size: smaller;
+  }
+}
+
+.portfolio-select-field:hover {
+  background-color: mat.get-color-from-palette($primary-palette);
+  //color: mat.get-color-from-palette($primary-palette);
+}

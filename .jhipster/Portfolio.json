@@ -1,0 +1,22 @@
+{
+  "name": "Portfolio",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "portfolioItem",
+      "otherEntityRelationshipName": "portfolio",
+      "relationshipName": "portfolioItems"
+    }
+  ],
+  "entityTableName": "portfolio",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211203152230"
+}

@@ -1,0 +1,110 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+// import our custom theme
+@import '../../../content/scss/_rmk-theme';
+
+$color-config:    mat.get-color-config($theme);
+$primary-palette: map.get($color-config, 'primary');
+$accent-palette:  map.get($color-config, 'accent');
+$warn-palette:    map.get($color-config, 'warn');
+$is-dark-theme:   map.get($color-config, 'is-dark');
+
+$typography-config: mat.get-typography-config($theme);
+$my-font-family: mat.font-family($typography-config);
+
+//========== Sidebar Style =========
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 200px;
+}
+
+mat-sidenav-content {
+  padding: 8px;
+}
+
+.menu-item {
+  color: mat.get-typography-config($light-text);
+}
+
+.sidenav {
+  background-color: mat.get-color-from-palette($primary-palette);
+  opacity: 0.85;
+}
+
+// hover on the menu items
+::ng-deep .mat-list-item-content:hover {
+  background-color: mat.get-color-from-palette($primary-palette, 'lighter');
+}
+
+.mat-expansion-panel {
+  background-color: mat.get-color-from-palette($primary-palette);
+  margin: 0;
+}
+
+.mat-expansion-panel:hover {
+  background-color: mat.get-color-from-palette($primary-palette, 'lighter');
+}
+
+.mat-panel-title {
+  margin: 0;
+  color: mat.get-typography-config($light-text);
+}
+
+mat-expansion-panel-header {
+  background-color: mat.get-color-from-palette($primary-palette);
+  padding-left: 16px;
+}
+
+// style of the small arrow near the entities dropdown in the sidenav
+::ng-deep .mat-expansion-indicator::after, .mat-expansion-panel-header-description {
+   color: mat.get-typography-config($light-text);
+}
+
+.submenu-item {
+    color: mat.get-typography-config($light-text);
+}
+
+.submenu-item:hover {
+    background-color: mat.get-color-from-palette($accent-palette);
+    color: mat.get-color-from-palette($primary-palette);
+}
+
+//========== Login Style =========
+
+.login-failed {
+  display: flex;
+  justify-content: center;
+  padding-top: 20%;
+}
+
+.login-failed::before {    
+  content: "";
+  background-image: url("../../../content/images/home-background-img.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.5;
+}
+
+.standard-button {
+  color: mat.get-typography-config($light-text);
+  text-align: center;
+  background-color: mat.get-color-from-palette($primary-palette);
+  padding: 10px 32px;
+  border: 2px solid mat.get-color-from-palette($primary-palette);
+  position: relative;
+}
+
+.standard-button:hover {
+  background-color: mat.get-color-from-palette($accent-palette);
+  color: mat.get-color-from-palette($primary-palette);
+}
+

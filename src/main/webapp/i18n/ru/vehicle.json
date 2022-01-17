@@ -1,0 +1,33 @@
+{
+  "rmkproApp": {
+    "vehicle": {
+      "home": {
+        "title": "Vehicles",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Vehicle",
+        "createOrEditLabel": "Создать или отредактировать Vehicle",
+        "notFound": "Vehicles не найдено"
+      },
+      "created": "Новый Vehicle создан с идентификатором {{ param }}",
+      "updated": "Vehicle обновлен с идентификатором {{ param }}",
+      "deleted": "Vehicle удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Vehicle {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle"
+      },
+      "id": "ID",
+      "plateNumber": "Plate Number",
+      "firstRegistrationDate": "First Registration Date",
+      "used": "Used",
+      "mileage": "Mileage",
+      "mileageUnit": "Mileage Unit",
+      "fuelType": "Fuel Type",
+      "vin": "Vin",
+      "make": "Make",
+      "model": "Model",
+      "owner": "Owner"
+    }
+  }
+}

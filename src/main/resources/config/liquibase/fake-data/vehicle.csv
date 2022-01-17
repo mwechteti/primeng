@@ -1,0 +1,5 @@
+id;plate_number;first_registration_date;used;mileage;mileage_unit;fuel_type;vin
+1;GR-52-0123;1999-09-10;false;99529;mi;petrol;ABCD123XDRE0128
+2;GB 98123X;2012-03-01;false;112000;mi;petrol;EFGH123XDRE0129
+3;TR 91 AAX2;2021-05-31;true;1300;km;electric;IJKL123XDRE0130AA
+

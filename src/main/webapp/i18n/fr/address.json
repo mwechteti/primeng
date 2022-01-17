@@ -1,0 +1,31 @@
+{
+  "rmkproApp": {
+    "address": {
+      "home": {
+        "title": "Addresses",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Address",
+        "createOrEditLabel": "Créer ou éditer un Address",
+        "notFound": "Aucun Address trouvé"
+      },
+      "created": "Un nouveau Address a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Address avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Address avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Address {{ id }} ?"
+      },
+      "detail": {
+        "title": "Address"
+      },
+      "id": "ID",
+      "label": "Label",
+      "postCode": "Post Code",
+      "addressLine1": "Address Line 1",
+      "addressLine2": "Address Line 2",
+      "city": "City",
+      "main": "Main",
+      "country": "Country",
+      "legalEntity": "Legal Entity"
+    }
+  }
+}

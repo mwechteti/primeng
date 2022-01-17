@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <!--
+        Added the entity PortfolioItemStatusEntry.
+    -->
+    <changeSet id="0002-6-1" author="serge">
+        <createTable tableName="portfolio_item_status_entry">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="portfolio_item_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status_creation_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="0002-6-2" author="serge">
+        <addForeignKeyConstraint baseColumnNames="portfolio_item_id"
+                                 baseTableName="portfolio_item_status_entry"
+                                 constraintName="fk_portfolio_item_status_entry_portfolio_item_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="portfolio_item"/>
+
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                baseTableName="portfolio_item_status_entry"
+                                constraintName="fk_portfolio_item_status_entry_status_id"
+                                referencedColumnNames="id"
+                                referencedTableName="portfolio_item_status"/>
+    </changeSet>
+
+    <changeSet id="0002-6-data" author="serge" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/portfolio_item_status_entry.csv"
+                  separator=";"
+                  tableName="vehicle_status"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="portfolio_item_id" type="numeric"/>
+            <column name="status_id" type="numeric"/>
+            <column name="status_creation_date" type="date"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

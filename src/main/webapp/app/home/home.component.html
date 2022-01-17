@@ -1,0 +1,99 @@
+<div>
+
+    <!-- Here we select the portfolio to load its items-->
+    <div class="portfolio-select" >
+      <mat-form-field appearance="fill" class="portfolio-select-field">
+        <mat-label>Selected Portfolio</mat-label>
+        <mat-select [(value)]="selectedPortfolio" placeholder="Mode" (selectionChange)="loadPortfolioItems(selectedPortfolio)">
+          <mat-option *ngFor="let portfolio of portfolios" [value]="portfolio">
+            {{portfolio.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  
+    <jhi-alert-error></jhi-alert-error>
+  
+    <jhi-alert></jhi-alert>
+  
+    <div *ngIf="portfolioItems$ | async as items">
+      <div *ngIf="items.length == 0"  class="alert alert-warning" id="no-result">
+        <span jhiTranslate="rmkproApp.portfolioItem.home.notFound">No portfolioItems found</span>
+      </div>
+
+      <div class="table-responsive" id="entities" *ngIf="items.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+          <thead>
+            <tr>
+              <th scope="col"><span jhiTranslate="home.portfolioItem.carImage">Car Image</span></th>
+              <th scope="col"><span jhiTranslate="home.portfolioItem.plateNumber">Plate Number</span></th>
+              <th scope="col"><span jhiTranslate="home.portfolioItem.carMake">Car Make</span></th>
+              <th scope="col"><span jhiTranslate="home.portfolioItem.carModel">Car Model</span></th>
+              <th scope="col"><span jhiTranslate="home.portfolioItem.stockEntranceDate">Stock Entrance Date</span></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let portfolioItem of items; trackBy: trackId" data-cy="entityTable">
+              <td>Img</td>
+              <td>
+                <div *ngIf="portfolioItem.vehicle">
+                  {{ portfolioItem.vehicle?.plateNumber }}
+                </div>
+              </td>
+              <td>
+                <div *ngIf="portfolioItem.vehicle">
+                  {{ portfolioItem.vehicle?.make?.label }}
+                </div>
+              </td>
+              <td>
+                <div *ngIf="portfolioItem.vehicle">
+                  {{ portfolioItem.vehicle?.model?.label }}
+                </div>
+              </td>
+              <td>{{ portfolioItem.stockEntranceDate }}</td>
+              <td class="text-right">
+                <div class="btn-group">
+                  <button
+                    type="submit"
+                    [routerLink]="['/portfolio-item', portfolioItem.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </button>
+    
+                  <button
+                    type="submit"
+                    [routerLink]="['/portfolio-item', portfolioItem.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </button>
+    
+                  <button type="submit" (click)="delete(portfolioItem)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="text-align: right; padding: 20px;">
+      <!-- <div class="example-flex-container"> -->
+        <div >
+          <button mat-fab class="standard-button" color="primary" [routerLink]="['/portfolio-item/new']">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      <!-- </div> -->
+    </div>
+  </div>
+  

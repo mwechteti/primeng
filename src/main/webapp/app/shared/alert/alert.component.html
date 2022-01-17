@@ -1,0 +1,5 @@
+<div *ngFor="let alert of alerts">
+  <ngb-alert *ngIf="alert.message" [type]="alert.type" [dismissible]="false">
+    {{alert.message}}
+  </ngb-alert>
+</div>

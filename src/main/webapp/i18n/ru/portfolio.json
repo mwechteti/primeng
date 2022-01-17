@@ -1,0 +1,24 @@
+{
+  "rmkproApp": {
+    "portfolio": {
+      "home": {
+        "title": "Portfolios",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Portfolio",
+        "createOrEditLabel": "Создать или отредактировать Portfolio",
+        "notFound": "Portfolios не найдено"
+      },
+      "created": "Новый Portfolio создан с идентификатором {{ param }}",
+      "updated": "Portfolio обновлен с идентификатором {{ param }}",
+      "deleted": "Portfolio удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Portfolio {{ id }}?"
+      },
+      "detail": {
+        "title": "Portfolio"
+      },
+      "id": "ID",
+      "portfolioItems": "Portfolio Items"
+    }
+  }
+}

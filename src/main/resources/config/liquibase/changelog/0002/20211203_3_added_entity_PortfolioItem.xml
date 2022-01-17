@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <!--
+        Added the entity PortfolioItem.
+    -->
+    <changeSet id="0002-4-1" author="serge">
+        <createTable tableName="portfolio_item">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="vehicle_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="portfolio_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="0002-4-2" author="serge">
+        <addForeignKeyConstraint baseColumnNames="vehicle_id"
+                                 baseTableName="portfolio_item"
+                                 constraintName="fk_portfolio_item_vehicle_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="vehicle"/>
+
+        <addForeignKeyConstraint baseColumnNames="portfolio_id"
+                                 baseTableName="portfolio_item"
+                                 constraintName="fk_portfolio_item_portfolio_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="portfolio"/>
+    </changeSet>
+
+    <changeSet id="0002-4-data" author="serge" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/portfolio_item.csv"
+                  separator=";"
+                  tableName="portfolio_item"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

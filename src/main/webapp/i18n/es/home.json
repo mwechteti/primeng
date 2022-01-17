@@ -1,0 +1,9 @@
+{
+  "home": {
+    "title": "RMKPRO: Pagina de inicio",
+    "subtitle": "Leasys UK Remarketing Tool",
+    "logged": {
+      "message": "Está conectado como \"{{username}}\"."
+    }
+  }
+}

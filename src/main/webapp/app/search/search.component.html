@@ -1,0 +1,10 @@
+<div class="veh-list-container">
+    <mat-nav-list>
+        <mat-list-item *ngFor="let vehicle of vehicles$">
+            <h3 matLine> {{vehicle.plateNumber}} </h3>
+            <p matLine>
+              <span> {{vehicle.make}} </span>
+            </p>
+          </mat-list-item>
+      </mat-nav-list>
+  </div>

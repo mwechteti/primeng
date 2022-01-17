@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="portfolioItem">
+      <h2 data-cy="portfolioItemDetailsHeading"><span jhiTranslate="rmkproApp.portfolioItem.detail.title">Portfolio Item</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ portfolioItem.id }}</span>
+        </dd>
+
+        <dt><span jhiTranslate="rmkproApp.portfolioItem.portfolio">Portfolio</span></dt>
+        <dd>
+          <div *ngIf="portfolioItem.portfolio">
+            <a [routerLink]="['/portfolio', portfolioItem.portfolio?.id, 'view']">{{ portfolioItem.portfolio?.id }}</a>
+          </div>
+        </dd>
+
+        <dt><span jhiTranslate="rmkproApp.portfolioItem.vehicle">Vehicle</span></dt>
+        <dd>
+          <div *ngIf="portfolioItem.vehicle">
+            <a [routerLink]="['/vehicle', portfolioItem.vehicle?.id, 'view']">{{ portfolioItem.vehicle?.id }}</a>
+          </div>
+        </dd>
+
+        <dt><span jhiTranslate="rmkproApp.portfolioItem.stockEntranceDate">Stock Entrance Date</span></dt>
+        <dd>
+          <div *ngIf="portfolioItem.stockEntranceDate">
+            <a [routerLink]="['/vehicle', portfolioItem.stockEntranceDate, 'view']">{{ portfolioItem.stockEntranceDate | formatMediumDate }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/portfolio-item', portfolioItem.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

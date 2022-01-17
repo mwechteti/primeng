@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <!--
+        Added the entity PortfolioItemStatus.
+    -->
+    <changeSet id="0002-5" author="serge">
+        <createTable tableName="portfolio_item_status">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="label" type="varchar(50)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uc_portfolio_item_status_label"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="0002-5-data" author="serge" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/portfolio_item_status.csv"
+                  separator=";"
+                  tableName="portfolio_item_status"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="label" type="string"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

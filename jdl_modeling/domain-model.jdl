@@ -1,0 +1,145 @@
+/*
+== One to One relationship is a condition where data in a table only has a relationship to one data in another table.
+Ex: One employee only has one account and vice versa.
+
+== A many-to-one relationship is where one entity (typically a column or set of columns) contains values that refer to another
+ entity (a column or set of columns) that has unique values.
+Ex: a Make has many Models -> Many Models maps to One make
+
+== A one-to-many relationship occurs in database design when one entity has a multivalued relationship with another entity.
+Ex: One position can have many employees, but each employee can only work for one position.
+
+One-To-Many:  This type of relationship is not provided by default in JHipster at the moment
+
+You have two solutions for this:
+
+- Do a bidirectional mapping, and use it without modification: this is our recommended approach, as it is much simpler
+- Do a bidirectional mapping, and then modify it to transform it into a unidirectional mapping:
+   Remove the “mappedBy” attribute on your @OneToMany annotation
+   Generate the required join table: you can do a mvn liquibase:diff to generate that table, see the documentation about using Liquibase diff
+
+== A many-to-many relationship is a relationship that is multivalued in both directions.
+Ex: One account can have more than one role, and one role can have more than one account.
+
+
+All the relationships use the default JPA FetchType:
+
+OneToMany: LAZY
+ManyToOne: EAGER
+ManyToMany: LAZY
+OneToOne: EAGER
+
+*/
+
+// A Legal Entity is a person or company.
+entity LegalEntity {
+  name String required
+}
+
+// Legal Entity Type is private individual or Company
+entity LegalEntityType {
+  label String required
+}
+
+// The vehicle Model ex: Corolla
+entity Model {
+  label String required
+  year Integer required
+}
+
+// The Make or Brand (ex. Toyota)
+entity Make {
+  label String required
+}
+
+// represents a Vehicle in the system
+entity Vehicle {
+  plateNumber String required
+  firstRegistrationDate LocalDate required
+  used Boolean required
+  mileage Integer required
+  mileageUnit String required
+  fuelType String required
+  vin String
+}
+
+// the imported CAP Data
+entity CapData {
+}
+
+// represents a Country: United Kingdom, France
+entity Country {
+  name String required
+  code String required
+}
+
+// represents an Address
+entity Address {
+  label String required
+  postCode String required
+  addressLine1 String required
+  addressLine2 String
+  city String required
+  main Boolean required
+}
+
+// A Portfolio contains all items to monitor
+entity Portfolio {
+  label String required
+}
+
+// A Portfolio Item containing a Vehicle with its details
+entity PortfolioItem
+
+// A Portfolio Item Details
+entity PortfolioItemDetails {
+  currentLocation String
+  stockEntranceDate LocalDate
+  reservePrice BigDecimal
+  proposedSalesPrice BigDecimal
+  netBookValue BigDecimal
+}
+
+// the list of available Portfolio Item Statuses
+entity PortfolioItemStatus {
+  label String required
+}
+
+// A Portfolio Item Status Entry linked to a portfolio item
+entity PortfolioItemStatusEntry
+
+// a Vehicle has one Make
+// a Vehicle has one Model
+// a bidirectional relationship: a LegalEntity (Owner) has one or many vehicles (List of Vehicles) and a Vehicle has one Owner (LegalEntity),
+// a bidirectional relationship: a LegalEntity has one or many addresses, and an Address refers to One legalEntity.
+// a Make has many Models
+// a bidirectional relationship: a Portfolio has one or many portfolioItems, and a PortfolioItem refers to one Portfolio.
+// a PortfolioItemStatusEntry has one portfolioItemStatus
+// a bidirectional relationship: a PortfolioItem has one or many PortfolioItemStatusEntry, and a PortfolioItemStatusEntry refers to one PortfolioItem.
+relationship ManyToOne {
+  Vehicle{make} to Make,
+  Vehicle{model} to Model,
+  Vehicle{owner} to LegalEntity{vehicles},
+  Address{legalEntity} to LegalEntity{addresses},
+  Model{make} to Make,
+  PortfolioItem{portfolio} to Portfolio{portfolioItems},
+  PortfolioItemStatusEntry{portfolioItem} to PortfolioItem{statusEntries}
+}
+
+// A LegalEntity has One LegalEntityType
+// An Address has One Country
+// A PortfolioItem has One Vehicle
+// A PortfolioItemStatusEntry has One PortfolioItemStatus
+// A PortfolioItem has One PortfolioItemDetails
+relationship OneToOne {
+  LegalEntity{type} to LegalEntityType,
+  Address{country} to Country,
+  PortfolioItem{vehicle} to Vehicle,
+  PortfolioItemStatusEntry{status} to PortfolioItemStatus,
+  PortfolioItem{portfolioItemDetails} to PortfolioItemDetails
+}
+
+// a bidirectional relationship: a User has one or many portfolios, and a Portfolio has one or Many assigned users
+relationship ManyToMany {
+  User{portfolios} to Portfolio{assignedUsers required}
+}

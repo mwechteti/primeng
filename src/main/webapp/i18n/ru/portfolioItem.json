@@ -1,0 +1,26 @@
+{
+  "rmkproApp": {
+    "portfolioItem": {
+      "home": {
+        "title": "Portfolio Items",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Portfolio Item",
+        "createOrEditLabel": "Создать или отредактировать Portfolio Item",
+        "notFound": "Portfolio Items не найдено"
+      },
+      "created": "Новый Portfolio Item создан с идентификатором {{ param }}",
+      "updated": "Portfolio Item обновлен с идентификатором {{ param }}",
+      "deleted": "Portfolio Item удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Portfolio Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Portfolio Item"
+      },
+      "id": "ID",
+      "vehicle": "Vehicle",
+      "stockEntranceDate": "Stock Entrance Date",
+      "portfolio": "Portfolio"
+    }
+  }
+}

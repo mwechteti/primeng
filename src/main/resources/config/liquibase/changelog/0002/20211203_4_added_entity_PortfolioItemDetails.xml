@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <!--
+        Added the entity PortfolioItemDetails.
+        We have a shared primary key between portfolio_item_details and portfolio_item for the One-to-one relationship between the 2 tables.
+        The primary key of portfolio_item_details is the primary key of portfolio_item.
+        The foreign key also on the same column on portfolio_item_details acts as a primary key for cleaner design and better performance.
+    -->
+    <changeSet id="0002-3-1" author="serge">
+        <createTable tableName="portfolio_item_details">
+            <column name="portfolio_item_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current_location" type="varchar(60)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="stock_entrance_date" type="date">
+                <constraints nullable="true"/>
+            </column>
+            <column name="reserve_price" type="decimal(13, 2)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="proposed_sales_price" type="decimal(13, 2)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="net_book_value" type="decimal(13, 2)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="0002-3-2" author="serge">
+        <addForeignKeyConstraint baseColumnNames="portfolio_item_id"
+                                baseTableName="portfolio_item_details"
+                                constraintName="fk_portfolio_item_details_portfolio_item_id"
+                                referencedColumnNames="id"
+                                referencedTableName="portfolio_item"/>
+
+        <addPrimaryKey columnNames="portfolio_item_id"
+                       constraintName="pk_portfolio_item_details"
+                       tableName="portfolio_item_details"
+                       validate="true"/>
+    </changeSet>
+
+    <changeSet id="0002-3-data" author="serge" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/portfolio_item_details.csv"
+                  separator=";"
+                  tableName="portfolio_item_details"
+                  usePreparedStatements="true">
+            <column name="portfolio_item_id" type="numeric"/>
+            <column name="current_location" type="string"/>
+            <column name="stock_entrance_date" type="decimal"/>
+            <column name="reserve_price" type="decimal"/>
+            <column name="proposed_sales_price" type="decimal"/>
+            <column name="net_book_value" type="decimal"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

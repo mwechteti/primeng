@@ -1,0 +1,36 @@
+{
+  "name": "PortfolioItem",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "vehicle",
+      "otherEntityRelationshipName": "portfolioItem",
+      "relationshipName": "vehicle",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "portfolioItemDetails",
+      "otherEntityRelationshipName": "portfolioItem",
+      "relationshipName": "portfolioItemDetails",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "portfolio",
+      "otherEntityRelationshipName": "portfolioItems",
+      "relationshipName": "portfolio"
+    }
+  ],
+  "entityTableName": "portfolio_item",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211203152231"
+}

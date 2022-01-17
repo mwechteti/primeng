@@ -1,0 +1,46 @@
+<!-- The toolbar on the top -->
+<mat-toolbar class="toolbar">
+  <div *ngIf="account">
+    <button class="toolbar__icon-button" (click)="toggleSidebar()" mat-icon-button>
+      <mat-icon class="toolbar-icon">menu</mat-icon>
+    </button>
+    <span class="toolbar__title mat-body-1">{{ version }}</span>
+  </div>
+  <div class="toolbar__logo-title-group" fxLayout fxLayoutAlign="center center">
+    <a routerLink="/" fxLayout>
+      <img class="toolbar__logo" src="../../content/images/leasys_logo.png" alt="RMKPRO Logo">
+    </a>
+  </div>
+
+  <div fxFlex></div>
+
+  <div>
+    <button mat-icon-button [matMenuTriggerFor]="alert" *ngIf="account" class="toolbar__icon-button">
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <mat-menu #alert="matMenu">
+    </mat-menu>
+  </div>
+  <div>
+    <button mat-icon-button [matMenuTriggerFor]="person" class="toolbar__icon-button toolbar__person-button">
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #person="matMenu">
+      <button mat-menu-item *ngIf="!account">
+        <mat-icon style="color: black">input</mat-icon>
+        <a (click)="login()" id="login" data-cy="login" class="toolbar-menu-item">
+          <span jhiTranslate="global.menu.account.login">Sign in</span>
+        </a>
+      </button>
+      <button mat-menu-item *ngIf="account">
+        <mat-icon style="color: black">directions_run</mat-icon>
+        <a (click)="logout()" id="logout" data-cy="logout" class="toolbar-menu-item">
+          <span jhiTranslate="global.menu.account.logout">Sign out</span>
+        </a>
+      </button>
+    </mat-menu>
+    <span class="mat-body-1">{{getUserFirstName()}}</span>
+  </div>
+</mat-toolbar>
+
+<jhi-main-content [events]="sideNavEvents.asObservable()"></jhi-main-content>

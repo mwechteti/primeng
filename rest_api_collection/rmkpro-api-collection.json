@@ -1,0 +1,832 @@
+{
+	"info": {
+		"_postman_id": "1b1a6445-9120-43ab-8c9c-700d3344fcad",
+		"name": "rmkpro-api Oauth2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth - Security",
+			"item": [
+				{
+					"name": "Check user authentication",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/authenticate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Authorization Server  Info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/auth-info",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Authorities - Bearer Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/authorities",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"authorities"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "portfolio",
+			"item": [
+				{
+					"name": "Get All Portfolios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Portfolio items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/portfolio-items",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"portfolio-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific Portfolio item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/portfolio-item/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"portfolio-item",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Portfolios Items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/portfolio-items/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"portfolio-items",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Portfolio id = 1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/portfolios/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"portfolios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Portfolio id = 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/portfolios/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"portfolios",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "legal-entity",
+			"item": [
+				{
+					"name": "Get Legal Entity Types",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "client_authentication",
+									"value": "body",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://localhost:8085/oauth2/authorization/oidc",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://dev-54265046.okta.com/oauth2/default/v1/token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "openid profile email",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "9L6acy0DD3Ql3s6F7W4Bj8HV0rPpXz2SAQLswSgo",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "0oa1ey6w4m0GugRQ75d7",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "api_token",
+									"type": "string"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:8085/login/oauth2/code/oidc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8085/api/legal-entity-types",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"api",
+								"legal-entity-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Legal Entity Types - Bearer Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/legal-entity-types",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"legal-entity-types"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Get User By Login - Mickey",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/user/mickey.mouse@mail.com",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"mickey.mouse@mail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Login - Donald",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/user/donald.duck@host.com",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"donald.duck@host.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Public Users - Bearer Token Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users - Bearer Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vehicle",
+			"item": [
+				{
+					"name": "Get vehicle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{api_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/vehicles/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"vehicles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "tokenType",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "accessToken",
+				"value": "eyJraWQiOiJRSnBHeTlmaUl4cktuWlFhQkRlUnh0R05YaHQyQjRkdURqVU1KbWdTcXJrIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULkJuSktlRGRLRWR1QUJTRzFZbk1Eb2NXaTlUcXlObHNQai1VN2RZX3JueGsiLCJpc3MiOiJodHRwczovL2Rldi01NDI2NTA0Ni5va3RhLmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2NDE0NzgyNTgsImV4cCI6MTY0MTQ4MTg1OCwiY2lkIjoiMG9hMWV5Nnc0bTBHdWdSUTc1ZDciLCJ1aWQiOiIwMHUxZXk1NDdrZGhnRnhaaTVkNyIsInNjcCI6WyJwcm9maWxlIiwiZW1haWwiLCJvcGVuaWQiXSwic3ViIjoic2VyZ2UuYWJvdXNhbGVoQGdtYWlsLmNvbSJ9.LleLBETH5ddCzRwDadTQy7W0DX11xKkNWq9bRjjZCu2TnUCa_e28FRiyhXom5WrtC4AV19EiK52-2pKalqunP6Wq81oHP-eMInNjY_Ot1dkzc2-ydWJB1pF-1fK8ekjfPXmnEiMY1Euvtb8SWNU19Btnuss27VeGA1lnf-Kt90R2r6FqYj_1rvNtrpYtLyHHF1QwtBr9ANKF2V_JR6XZylLOWSguBLIr5VlIFTWnAewK4sMFiuxM3qC8HKvUhESd5XMle24oe65hc1TqlO2hBzXvTcb6mspTz5QN_s0r9zI7iAiRmpAS2r8Bhcq12tpzur6TCTOJVsiMkkrWEEtEWQ",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "queryParams",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "http://localhost:8085/oauth2/authorization/oidc",
+				"type": "string"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "http://localhost:8085/login/oauth2/code/oidc",
+				"type": "string"
+			},
+			{
+				"key": "resource",
+				"value": {
+					"51f8acb7-b4b7-4284-91be-6126e631780a": "http://localhost:8085"
+				},
+				"type": "any"
+			},
+			{
+				"key": "grant_type",
+				"value": "authorization_code",
+				"type": "string"
+			},
+			{
+				"key": "headerPrefix",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "body",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "api_token",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "openid profile email",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "9L6acy0DD3Ql3s6F7W4Bj8HV0rPpXz2SAQLswSgo",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "0oa1ey6w4m0GugRQ75d7",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://dev-54265046.okta.com/oauth2/default/v1/token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8085",
+			"type": "string"
+		},
+		{
+			"key": "api_token",
+			"value": "eyJraWQiOiJRSnBHeTlmaUl4cktuWlFhQkRlUnh0R05YaHQyQjRkdURqVU1KbWdTcXJrIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULjRGRzFNcGxTcFB5ZmZZckpwM0VtcGxNM25DOURyeV9UZ2ZrYmtEN3g5MEUiLCJpc3MiOiJodHRwczovL2Rldi01NDI2NTA0Ni5va3RhLmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2NDE4MzUyNDMsImV4cCI6MTY0MTgzODg0MywiY2lkIjoiMG9hMWV5Nnc0bTBHdWdSUTc1ZDciLCJ1aWQiOiIwMHUxZXk1NDdrZGhnRnhaaTVkNyIsInNjcCI6WyJwcm9maWxlIiwiZW1haWwiLCJvcGVuaWQiXSwic3ViIjoic2VyZ2UuYWJvdXNhbGVoQGdtYWlsLmNvbSJ9.HCxHeiVLfvAdt2BpH-BMlhCR63qdlgdd3tsB795mbh9PCutnPjOJOmmgPE-crjQJC5Seb__DIzfmQ7fapQT1N929CN8oGOPy5xfowExyHiE9hSo3yqn0Qu-j3z9iEEH8cuQvXKj498ynPvzqajCXFeoNF5jRN_4tqeeqk8YzFISw6mJEYa2u54s2UT8tXC2BWSXGnSUVTNBPlV3IUPH92vYE5o4_aBbV0haAHrtwBLJxmpscDrijgPsCXkPwelQ9aHivR_6T4wBZwzXpq1vg8yP9wo4KlHlTzKAeSlM3R0lbCGqRiUwZaT8H4cKBxrjKkG9qu2gMBz6uJMQsySNopw"
+		}
+	]
+}

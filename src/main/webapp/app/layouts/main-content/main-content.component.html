@@ -1,0 +1,51 @@
+<mat-sidenav-container>
+  <!-- The sidenav element -->
+  <mat-sidenav #sidenav *ngIf="account" mode="side" class="sidenav" role="navigation" [(opened)]="sidenavOpened">
+    <mat-nav-list>
+      <mat-list-item *ngFor="let link of menuItems">
+        <a matLine href="{{ link.path }}" class="mat-subheading-2 menu-item">{{ link.title }}</a>
+        <mat-icon class="menu-item">{{ link.icon }}</mat-icon>
+      </mat-list-item>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+        class="mat-expansion-panel">
+        <mat-expansion-panel-header class="expansion-panel-header">
+          <mat-panel-title class="mat-panel-title mat-subheading-2">
+            Entities
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let navItem of navItems" class="submenu-item">
+          <a href="{{ navItem.path }}">{{ navItem.title }}</a>
+        </div>
+      </mat-expansion-panel>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- The main element -->
+  <mat-sidenav-content>
+
+    <!-- Login Successful content-->
+    <div [ngSwitch]="account !== null">
+      <div *ngSwitchCase="true">
+        <div class="alert alert-success my-alert-sucess">
+          <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
+            [translateValues]="{ username: account.login }">
+          </span> <b>{{ account?.login }}</b>
+        </div>
+      </div>
+
+      <!-- Login Failed content-->
+      <div *ngSwitchCase="false" class="login-failed">
+        <div>
+          <button class="standard-button mat-body-2" (click)="login()">Sign in</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="account">
+      <!-- the area on the page where the router will render the components (one at a time) -->
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

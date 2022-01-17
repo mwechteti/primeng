@@ -1,0 +1,154 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import 'bootstrap-variables';
+@import '~bootstrap/scss/functions';
+@import '~bootswatch/dist/cosmo/variables';
+@import '~bootstrap/scss/variables';
+
+// import our custom theme
+@import './_rmk-theme';
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/icon?family=Titillium+Web:600');
+@import url('https://fonts.googleapis.com/icon?family=Abril+Fatface');
+
+
+
+$color-config:    mat.get-color-config($theme);
+$primary-palette: map.get($color-config, 'primary');
+$accent-palette:  map.get($color-config, 'accent');
+$warn-palette:    map.get($color-config, 'warn');
+$is-dark-theme:   map.get($color-config, 'is-dark');
+
+$typography-config: mat.get-typography-config($theme);
+$my-font-family: mat.font-family($typography-config);
+/* ==============================================================
+Main CSS
+===============================================================*/
+
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: calc(100% - 45px);
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+h1, h2 {
+  color: mat.get-typography-config($dark-text);
+}
+
+.form-control-label {
+  color: mat.get-typography-config($dark-text);
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* ==============================================================
+Toolbar
+===============================================================*/
+
+.toolbar {
+  background-color: mat.get-color-from-palette($primary-palette);
+  color: mat.get-typography-config($light-text);
+  position: relative;
+  height: 45px;
+}
+
+.toolbar__logo-title-group {
+  position: absolute;
+  right: 50%;
+  left: 50%;
+}
+
+.toolbar__logo {
+  height: 20px;
+  width: 100px;
+  margin-right: 10px;
+}
+
+.toolbar__title {
+  text-decoration: none;
+  padding-top: 16px;
+}
+
+.toolbar-icon {
+  color: mat.get-typography-config($light-text);
+}
+.mat-icon-button:hover {
+  background-color: mat.get-color-from-palette($primary-palette, 'lighter');
+}
+
+
+/* ==========================================================================
+Custom alerts for notification
+========================================================================== */
+.my-alert-sucess {
+  padding: 0;
+  margin: 0;
+}
+
+.alerts {
+  .alert {
+    text-overflow: ellipsis;
+    pre {
+      background: none;
+      border: none;
+      font: inherit;
+      color: inherit;
+      padding: 0;
+      margin: 0;
+    }
+    .popover pre {
+      font-size: 10px;
+    }
+  }
+  .jhi-toast {
+    position: fixed;
+    width: 100%;
+    &.left {
+      left: 5px;
+    }
+    &.right {
+      right: 5px;
+    }
+    &.top {
+      top: 55px;
+    }
+    &.bottom {
+      bottom: 55px;
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .alerts .jhi-toast {
+    width: 50%;
+  }
+}
+
+/* ==========================================================================
+Buttons
+========================================================================== */
+// .standard-button {
+//   color: mat.get-typography-config($dark-text);
+//   text-align: center;
+//   background-color: mat.get-color-from-palette($primary-palette);
+//   padding: 10px 32px;
+//   border: 2px solid mat.get-color-from-palette($primary-palette);
+//   position: relative;
+// }
+
+.standard-button:hover {
+  background-color: mat.get-color-from-palette($accent-palette);
+  color: mat.get-color-from-palette($primary-palette);
+}

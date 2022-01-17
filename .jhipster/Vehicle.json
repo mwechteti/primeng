@@ -1,0 +1,69 @@
+{
+  "name": "Vehicle",
+  "fields": [
+    {
+      "fieldName": "plateNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "firstRegistrationDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "used",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mileage",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mileageUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fuelType",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vin",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "make",
+      "otherEntityRelationshipName": "vehicle",
+      "relationshipName": "make"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "model",
+      "otherEntityRelationshipName": "vehicle",
+      "relationshipName": "model"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "legalEntity",
+      "otherEntityRelationshipName": "vehicles",
+      "relationshipName": "owner"
+    }
+  ],
+  "entityTableName": "vehicle",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210919143057"
+}

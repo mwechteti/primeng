@@ -1,0 +1,209 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-vehicle-heading" data-cy="VehicleCreateUpdateHeading" jhiTranslate="rmkproApp.vehicle.home.createOrEditLabel">
+        Create or edit a Vehicle
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="rmkproApp.vehicle.plateNumber" for="field_plateNumber"
+            >Plate Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="plateNumber"
+            id="field_plateNumber"
+            data-cy="plateNumber"
+            formControlName="plateNumber"
+          />
+          <div
+            *ngIf="
+              editForm.get('plateNumber')!.invalid &&
+              (editForm.get('plateNumber')!.dirty || editForm.get('plateNumber')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('plateNumber')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="rmkproApp.vehicle.firstRegistrationDate" for="field_firstRegistrationDate"
+            >First Registration Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_firstRegistrationDate"
+              data-cy="firstRegistrationDate"
+              type="text"
+              class="form-control"
+              name="firstRegistrationDate"
+              ngbDatepicker
+              #firstRegistrationDateDp="ngbDatepicker"
+              formControlName="firstRegistrationDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="firstRegistrationDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+          <div
+            *ngIf="
+              editForm.get('firstRegistrationDate')!.invalid &&
+              (editForm.get('firstRegistrationDate')!.dirty || editForm.get('firstRegistrationDate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('firstRegistrationDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="rmkproApp.vehicle.used" for="field_used">Used</label>
+          <input type="checkbox" class="form-check" name="used" id="field_used" data-cy="used" formControlName="used" />
+          <div *ngIf="editForm.get('used')!.invalid && (editForm.get('used')!.dirty || editForm.get('used')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('used')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="rmkproApp.vehicle.mileage" for="field_mileage">Mileage</label>
+          <input type="number" class="form-control" name="mileage" id="field_mileage" data-cy="mileage" formControlName="mileage" />
+          <div *ngIf="editForm.get('mileage')!.invalid && (editForm.get('mileage')!.dirty || editForm.get('mileage')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('mileage')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('mileage')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="rmkproApp.vehicle.mileageUnit" for="field_mileageUnit">Mileage Unit</label>
+          <input
+            type="text"
+            class="form-control"
+            name="mileageUnit"
+            id="field_mileageUnit"
+            data-cy="mileageUnit"
+            formControlName="mileageUnit"
+          />
+          <div *ngIf="editForm.get('mileageUnit')!.invalid && (editForm.get('mileageUnit')!.dirty || editForm.get('mileageUnit')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('mileageUnit')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="rmkproApp.vehicle.fuelType" for="field_fuelType">Fuel Type</label>
+          <input type="text" class="form-control" name="fuelType" id="field_fuelType" data-cy="fuelType" formControlName="fuelType" />
+          <div *ngIf="editForm.get('fuelType')!.invalid && (editForm.get('fuelType')!.dirty || editForm.get('fuelType')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fuelType')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="rmkproApp.vehicle.vin" for="field_vin">Vin</label>
+          <input type="text" class="form-control" name="vin" id="field_vin" data-cy="vin" formControlName="vin" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="rmkproApp.vehicle.make" for="field_make">Make</label>
+          <select class="form-control" id="field_make" data-cy="make" name="make" formControlName="make">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="makeOption.id === editForm.get('make')!.value?.id ? editForm.get('make')!.value : makeOption"
+              *ngFor="let makeOption of makesSharedCollection; trackBy: trackMakeById"
+            >
+              {{ makeOption.label }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="rmkproApp.vehicle.model" for="field_model">Model</label>
+          <select class="form-control" id="field_model" data-cy="model" name="model" formControlName="model">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="modelOption.id === editForm.get('model')!.value?.id ? editForm.get('model')!.value : modelOption"
+              *ngFor="let modelOption of modelsSharedCollection; trackBy: trackModelById"
+            >
+              {{ modelOption.label }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="rmkproApp.vehicle.owner" for="field_owner">Owner</label>
+          <select class="form-control" id="field_owner" data-cy="owner" name="owner" formControlName="owner">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="legalEntityOption.id === editForm.get('owner')!.value?.id ? editForm.get('owner')!.value : legalEntityOption"
+              *ngFor="let legalEntityOption of legalEntitiesSharedCollection; trackBy: trackLegalEntityById"
+            >
+              {{ legalEntityOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

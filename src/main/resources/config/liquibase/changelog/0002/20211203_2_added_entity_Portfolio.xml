@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <!--
+        Added the entity Portfolio.
+    -->
+    <changeSet id="0002-2" author="serge">
+        <createTable tableName="portfolio">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="0002-2-data" author="serge" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/portfolio.csv"
+                  separator=";"
+                  tableName="portfolio"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>
