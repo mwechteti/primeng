@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <!--
+        modify column type for status_creation_date.
+    -->
+    <changeSet id="0003-3" author="serge">
+        <modifyDataType  tableName="portfolio_item_status_entry"
+                         columnName="status_creation_date"
+                         newDataType="datetime(6)"/>
+    </changeSet>
+
+</databaseChangeLog>

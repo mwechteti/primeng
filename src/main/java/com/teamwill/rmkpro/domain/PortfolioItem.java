@@ -45,7 +45,7 @@ public class PortfolioItem implements Serializable {
 
     @OneToMany(mappedBy = "portfolioItem", fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "portfolioItem", "status", "statusCreationDate" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "portfolioItem" }, allowSetters = true)
     private Set<PortfolioItemStatusEntry> statusEntries = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -119,9 +119,8 @@ public class PortfolioItem implements Serializable {
     public String toString() {
         return "PortfolioItem{" +
             "id=" + id +
-            ", vehicle=" + vehicle +
-            ", portfolio=" + portfolio +
-            ", statusEntries=" + statusEntries +
+            ", vehicle=" + vehicle.toString() +
+            ", portfolio=" + portfolio.toString() +
             '}';
     }
 }

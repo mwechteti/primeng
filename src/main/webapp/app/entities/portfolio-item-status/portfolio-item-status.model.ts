@@ -6,7 +6,7 @@ export interface IPortfolioItemStatus {
   export class PortfolioItemStatus implements IPortfolioItemStatus {
     constructor(
       public id?: number,
-      public vehicle?: string,
+      public label?: string,
     ) {}
   }
   

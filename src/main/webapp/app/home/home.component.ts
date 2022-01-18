@@ -9,7 +9,6 @@ import { PortfolioItemService } from 'app/entities/portfolio-item/service/portfo
 import { IPortfolio } from 'app/entities/portfolio/portfolio.model';
 import { IUser } from 'app/entities/user/user.model';
 import { UserService } from 'app/entities/user/user.service';
-import { flatMap, mergeMap, of } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 
 

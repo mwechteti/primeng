@@ -1,7 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PortfolioItemStatusService } from 'app/portfolio-item-status.service';
+import { PortfolioItemStatusService } from 'app/entities/portfolio-item-status/service/portfolio-item-status.service';
 import { IPortfolioItemStatus } from './portfolio-item-status.model';
 
 @Component({

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PortfolioItemStatusComponent } from './portfolio-item-status.component';
+import { PortfolioItemStatusComponent } from '../portfolio-item-status.component';
 
 
 const portfolioItemStatusRoute: Routes = [

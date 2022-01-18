@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
-    SharedModule, 
+    SharedModule,
     PortfolioItemRoutingModule,
     MatButtonModule,
     MatIconModule,],

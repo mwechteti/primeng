@@ -2,11 +2,13 @@ import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { IPortfolioItemStatusEntry } from 'app/entities/portfolio-item-status/portfolio-item-status-entry.model';
+import { IPortfolioItemStatus } from 'app/entities/portfolio-item-status/portfolio-item-status.model';
+import { PortfolioItemStatusService } from 'app/entities/portfolio-item-status/service/portfolio-item-status.service';
 import { IPortfolio } from 'app/entities/portfolio/portfolio.model';
 import { PortfolioService } from 'app/entities/portfolio/service/portfolio.service';
 import { HttpVehicleService } from 'app/entities/vehicle/service/vehicle.service';
 import { IVehicle } from 'app/entities/vehicle/vehicle.model';
-import { IPortfolioItemStatus } from 'app/entities/portfolio-item-status/portfolio-item-status.model';
 import { Observable } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
 import { IPortfolioItem, PortfolioItem } from '../portfolio-item.model';
@@ -29,10 +31,12 @@ export class PortfolioItemUpdateComponent implements OnInit {
     vehicle: [],
     portfolioItemDetails: [],
     portfolio: [],
+    status: [],
   });
 
   constructor(
     protected portfolioItemService: PortfolioItemService,
+    protected portfolioItemStatusService: PortfolioItemStatusService,
     protected vehicleService: HttpVehicleService,
     protected portfolioService: PortfolioService,
     protected activatedRoute: ActivatedRoute,
@@ -95,10 +99,18 @@ export class PortfolioItemUpdateComponent implements OnInit {
   }
 
   protected updateForm(portfolioItem: IPortfolioItem): void {
+    const currentStatus = this.getCurrentStatus(portfolioItem.statusEntries);
+    const plateNumber: string = (portfolioItem.vehicle?.plateNumber !== 'undefined') ? portfolioItem.vehicle?.plateNumber ?? 'unkwon plate' : 'unkwon plate';
+    const vehicleLabel = '[' + plateNumber + '] '
+                         + (portfolioItem.vehicle?.make?.label ?? '')
+                         + ' '
+                         + (portfolioItem.vehicle?.model?.label ?? '');
+
     this.editForm.patchValue({
       id: portfolioItem.id,
-      vehicle: portfolioItem.vehicle,
+      vehicle: vehicleLabel,
       portfolio: portfolioItem.portfolio,
+      status: currentStatus,
     });
 
     this.vehiclesCollection = this.vehicleService.addVehicleToCollectionIfMissing(this.vehiclesCollection, portfolioItem.vehicle);
@@ -106,17 +118,20 @@ export class PortfolioItemUpdateComponent implements OnInit {
       this.portfoliosSharedCollection,
       portfolioItem.portfolio
     );
+    this.portfolioItemStatuses = this.portfolioItemService.addPortfolioItemStatusToCollectionIfMissing(this.portfolioItemStatuses, currentStatus);
+  }
+
+  protected getCurrentStatus(statusEntries: IPortfolioItemStatusEntry[] | undefined): IPortfolioItemStatusEntry | null {
+    if (typeof statusEntries !== 'undefined' && statusEntries.length > 0) {
+      const maxId = Math.max(...statusEntries.map(function (o) { return o.id; }))
+      const element = statusEntries.find(elem => elem.id === maxId);
+      return (element !== undefined ? element : null);
+    }
+    return null;
   }
 
   protected loadRelationshipsOptions(): void {
-    this.vehicleService
-      .query({ filter: 'portfolioitem-is-null' })
-      .pipe(map((res: HttpResponse<IVehicle[]>) => res.body ?? []))
-      .pipe(
-        map((vehicles: IVehicle[]) => this.vehicleService.addVehicleToCollectionIfMissing(vehicles, this.editForm.get('vehicle')!.value as IVehicle))
-      )
-      .subscribe((vehicles: IVehicle[]) => (this.vehiclesCollection = vehicles));
-
+    // load portfolios
     this.portfolioService
       .query()
       .pipe(map((res: HttpResponse<IPortfolio[]>) => res.body ?? []))
@@ -126,6 +141,17 @@ export class PortfolioItemUpdateComponent implements OnInit {
         )
       )
       .subscribe((portfolios: IPortfolio[]) => (this.portfoliosSharedCollection = portfolios));
+
+    // load portfolio item statuses
+    this.portfolioItemStatusService.query()
+    .pipe(map((res: HttpResponse<IPortfolioItemStatus[]>) => res.body ?? []))
+      .pipe(
+        map((portfolioItemStatuses: IPortfolioItemStatus[]) =>
+          this.portfolioItemService.addPortfolioItemStatusToCollectionIfMissing(portfolioItemStatuses, this.editForm.get('status')!.value as IPortfolioItemStatus)
+        )
+      )
+      .subscribe((portfolioItemStatuses: IPortfolioItemStatus[]) => (this.portfolioItemStatuses = portfolioItemStatuses));
+
   }
 
   protected createFromForm(): IPortfolioItem {

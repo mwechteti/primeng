@@ -97,9 +97,9 @@ public class PortfolioItemStatusEntry implements Serializable {
     public String toString() {
         return "PortfolioItemStatusEntry{" +
             "id=" + id +
-            ", portfolioItem=" + portfolioItem +
-            ", status=" + status +
-            ", statusCreationDate=" + statusCreationDate +
+            ", portfolioItem=" + portfolioItem.toString() +
+            ", status=" + status.toString() +
+            ", statusCreationDate=" + statusCreationDate.toString() +
             '}';
     }
 }

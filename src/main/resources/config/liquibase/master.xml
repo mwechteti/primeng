@@ -40,6 +40,7 @@
     <!-- 0003-->
     <include file="config/liquibase/changelog/0003/20211217_1_alter_entity_Portfolio.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/0003/20211217_2_added_relationship_User_Portfolio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/0003/20220117_3_alter_entity_PortfolioItemStatusEntry.xml" relativeToChangelogFile="false"/>
 
 
 
